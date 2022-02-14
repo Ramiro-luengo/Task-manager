@@ -1,35 +1,32 @@
 from django.http import JsonResponse
-from django.views import View
-from django.utils.decorators import method_decorator
-from django.views.decorators.csrf import csrf_exempt
-from ..auth import login_required
+from rest_framework.views import APIView
+from rest_framework.permissions import IsAuthenticated
 
 from ..models import User, Folder, TodoItem
+from ..serializers import BoardSerializer, FolderSerializer, TodoItemSerializer
 
 
-class BoardSerializer(View):
-    @method_decorator(csrf_exempt)
-    def dispatch(self, request, *args, **kwargs):
-        return super().dispatch(request, *args, **kwargs)
+class BoardsView(APIView):
+    permission_classes = [IsAuthenticated]
 
-    def serialize(self, board):
+    def get(self, request, *args, **kwargs):
+        user = User.objects.get(id=request.user.id)
+        board = user.board
         folder = Folder.objects.get(board=board)
         todo_items = TodoItem.objects.filter(folder=folder)
-
         return JsonResponse(
             {
-                "board": board.serialize(),
-                "folder": folder.serialize(),
-                "todo_items": list(map(lambda item: item.serialize(), todo_items)),
+                "board": BoardSerializer(board).data,
+                "folder": FolderSerializer(folder).data,
+                "todoItems": TodoItemSerializer(todo_items, many=True).data,
             },
-            status=200,
+            safe=False,
         )
 
-
-class BoardsView(BoardSerializer):
-    @method_decorator(login_required)
-    def get(self, request, *args, **kwargs):
-        user = request.user
-        user_object: User = User.objects.get(id=user.id)
-        board = user_object.board
-        return self.serialize(board)
+    # def post(self, request, *args, **kwargs):
+    #     data = JSONParser().parse(request)
+    #     serializer = BoardSerializer(data=data)
+    #     if serializer.is_valid():
+    #         serializer.save()
+    #         return JsonResponse(serializer.data, status=201)
+    #     return JsonResponse(serializer.errors, status=400)

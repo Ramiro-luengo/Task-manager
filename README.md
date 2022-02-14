@@ -1,13 +1,9 @@
 # Introduction
-bla bla bla
+ - Superuser: Ramiro costilla123 
 
 # Installation
     > docker-compose up
 # Configuration
-
-# Troubleshooting
-
-# FAQ
 
 # Maintainers
 @ramiro-luengo
