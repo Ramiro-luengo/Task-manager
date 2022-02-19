@@ -7,9 +7,9 @@ function Folders({ data }) {
     const todos = data.todoItems;
 
     return folders.map(
-        folder => (
-            <div className="trello" >
-                <span>{folder.name}</span>
+        (folder, idx) => (
+            <div key={idx} className="trello" >
+                <span className='trello_folder_title'>{folder.name}</span>
                 {
                     todos.filter(todoItem => todoItem.folder === folder.name).map(
                         (todoItem, idx) => <TodoItem key={idx} todoItem={todoItem} />

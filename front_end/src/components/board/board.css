@@ -1,11 +1,3 @@
-.trello{
-    display: grid;
-    background: hsl(138, 73%, 41%);
-    grid-template-rows: 1fr;
-    grid-template-columns: repeat(auto-fit,250px);
-    grid-gap: 12px;
-    /* border-radius: 10px; */
-}
 .trello__list{
     background-color: #d6d5d5;
     border-radius: 3px;
@@ -17,14 +9,24 @@
     border-radius: 5px;
     margin: 7px;
     padding: 2px;
+    max-width: 300px;
 }
 
 .trello__list__title{
     font-weight: bold;
-    color: red;
+    color: white;
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: grey;
+}
+.trello_folder_title{
+    font-weight: bold;
+    color: white;
     text-align: center;
     padding: 5px;
-    background-color: #1db64b;
+    border-radius: 5px;
+    background-color: grey;
 }
 .highlighted{
     width: 30px;
@@ -39,11 +41,16 @@
     display: flex;
     font-size:large;
     justify-content: center;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
 }
 .trello{
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    /* justify-content: center;
+    align-items: center; */
+    background-color: #262d3b;
+    border-color: black;
+    border-style: solid;
+    border-radius: 5px;
+    height:100vh;
 }

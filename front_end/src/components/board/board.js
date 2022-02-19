@@ -3,12 +3,8 @@ import React, { useEffect, useState } from "react";
 import { css } from "@emotion/react";
 import RotateLoader from 'react-spinners/RotateLoader';
 
-// import { useSearchParams } from 'react-router-dom';
-// const [searchParams, _] = useSearchParams();
-// const username = searchParams.get('username') || '';
-
 import './board.css'
-import Folders from './card.js';
+import Folders from './folder.js';
 
 axios.defaults.withCredentials = true;
 const override = css`
@@ -35,9 +31,10 @@ function Board() {
         return () => { isMounted = false };
     }, []);
 
-    return bodyStr ? (<div className="board_container">
-        <Folders data={bodyStr} />
-    </div>) :
+    return bodyStr ? (
+        <div className="board_container">
+            <Folders data={bodyStr} />
+        </div>) :
         <RotateLoader loading={bodyStr} css={override} size={150} />
 }
 
