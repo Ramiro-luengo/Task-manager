@@ -8,7 +8,7 @@ import RotateLoader from 'react-spinners/RotateLoader';
 // const username = searchParams.get('username') || '';
 
 import './board.css'
-import Card from './card.js';
+import Folders from './card.js';
 
 axios.defaults.withCredentials = true;
 const override = css`
@@ -36,7 +36,7 @@ function Board() {
     }, []);
 
     return bodyStr ? (<div className="board_container">
-        <Card data={bodyStr} />
+        <Folders data={bodyStr} />
     </div>) :
         <RotateLoader loading={bodyStr} css={override} size={150} />
 }

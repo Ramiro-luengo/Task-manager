@@ -1,10 +1,10 @@
 .trello{
     display: grid;
-    background: #1db64b;
+    background: hsl(138, 73%, 41%);
     grid-template-rows: 1fr;
     grid-template-columns: repeat(auto-fit,250px);
     grid-gap: 12px;
-    border-radius: 10px;
+    /* border-radius: 10px; */
 }
 .trello__list{
     background-color: #d6d5d5;
@@ -41,7 +41,7 @@
     justify-content: center;
     flex-wrap: wrap;
 }
-.card_container{
+.trello{
     display: flex;
     flex-direction: column;
     justify-content: center;

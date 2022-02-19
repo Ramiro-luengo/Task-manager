@@ -1,7 +1,7 @@
 import './board.css';
 import TodoItem from './todoItem';
 
-function Card({ data }) {
+function Folders({ data }) {
     console.log(data);
     const folders = data.folders;
     const todos = data.todoItems;
@@ -20,4 +20,4 @@ function Card({ data }) {
     )
 }
 
-export default Card;
+export default Folders;
