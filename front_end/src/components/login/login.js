@@ -31,7 +31,8 @@ function Login() {
             });
         if (res.status === 200) {
             // Backend authenticated successfully
-            return redirect(`/board?username=${username}`)
+            // return redirect(`/board?username=${username}`)
+            return redirect(`/board`)
         } else {
             // Backend authentication failed
             // Display error message

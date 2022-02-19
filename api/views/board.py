@@ -12,12 +12,12 @@ class BoardsView(APIView):
     def get(self, request, *args, **kwargs):
         user = User.objects.get(id=request.user.id)
         board = user.board
-        folder = Folder.objects.get(board=board)
-        todo_items = TodoItem.objects.filter(folder=folder)
+        folder = Folder.objects.filter(board=board)
+        todo_items = TodoItem.objects.filter(folder__in=folder)
         return JsonResponse(
             {
                 "board": BoardSerializer(board).data,
-                "folder": FolderSerializer(folder).data,
+                "folders": FolderSerializer(folder, many=True).data,
                 "todoItems": TodoItemSerializer(todo_items, many=True).data,
             },
             safe=False,

@@ -24,7 +24,8 @@ class TagsSerializer(serializers.ModelSerializer):
 
 class TodoItemSerializer(serializers.ModelSerializer):
     tags = serializers.StringRelatedField(many=True)
+    folder = serializers.StringRelatedField()
 
     class Meta:
         model = TodoItem
-        fields = ["name", "created_at", "description", "tags"]
+        fields = ["name", "created_at", "description", "tags", "folder"]

@@ -1,15 +1,10 @@
-.board_container{
-    background-color: #31e768;
-    display: flex;
-    font-size:large ;
-}
-
 .trello{
     display: grid;
     background: #1db64b;
     grid-template-rows: 1fr;
     grid-template-columns: repeat(auto-fit,250px);
     grid-gap: 12px;
+    border-radius: 10px;
 }
 .trello__list{
     background-color: #d6d5d5;
@@ -17,19 +12,38 @@
     align-self: start;
 }
 .trello__list__item{
-    background-color: white;
     background: white;
     display: grid;
     border-radius: 5px;
     margin: 7px;
     padding: 2px;
 }
+
+.trello__list__title{
+    font-weight: bold;
+    color: red;
+    text-align: center;
+    padding: 5px;
+    background-color: #1db64b;
+}
 .highlighted{
-    background-color: rgb(102, 192, 102);
     width: 30px;
     color: white;
     border-radius: 4px;
     padding: 2px;
     font-size: small;
     margin-top: 2px;
+}
+
+.board_container{
+    display: flex;
+    font-size:large;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.card_container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
